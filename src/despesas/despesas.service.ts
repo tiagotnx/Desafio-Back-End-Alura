@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { CreateDespesaDto } from './dto/create-despesa.dto';
+import { CreateDespesasDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
 
 @Injectable()
 export class DespesasService {
-  constructor(private readonly: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
 
-  create(createDespesaDto: CreateDespesaDto) {
-    return 'This action adds a new despesa';
+  create(data: CreateDespesasDto) {
+    return this.prisma.despesas.create({ data });
   }
 
   findAll() {
-    return `This action returns all despesas`;
+    return this.prisma.despesas.findMany({});
   }
 
   findOne(id: number) {

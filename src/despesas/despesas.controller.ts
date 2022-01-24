@@ -8,7 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { DespesasService } from './despesas.service';
-import { CreateDespesaDto } from './dto/create-despesa.dto';
+import { CreateDespesasDto } from './dto/create-despesa.dto';
 import { UpdateDespesaDto } from './dto/update-despesa.dto';
 
 @Controller('despesas')
@@ -16,7 +16,7 @@ export class DespesasController {
   constructor(private readonly despesasService: DespesasService) {}
 
   @Post()
-  create(@Body() createDespesaDto: CreateDespesaDto) {
+  create(@Body() createDespesaDto: CreateDespesasDto) {
     return this.despesasService.create(createDespesaDto);
   }
 
