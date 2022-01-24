@@ -16,14 +16,21 @@ export class DespesasService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} despesa`;
+    return this.prisma.despesas.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateDespesaDto: UpdateDespesaDto) {
-    return `This action updates a #${id} despesa`;
+  update(id: number, data: UpdateDespesaDto) {
+    return this.prisma.despesas.update({
+      where: { id },
+      data,
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} despesa`;
+    return this.prisma.despesas.delete({
+      where: { id },
+    });
   }
 }

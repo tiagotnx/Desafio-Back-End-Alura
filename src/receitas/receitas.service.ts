@@ -16,14 +16,21 @@ export class ReceitasService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} receita`;
+    return this.prisma.receitas.findUnique({
+      where: { id },
+    });
   }
 
-  update(id: number, updateReceitaDto: UpdateReceitaDto) {
-    return `This action updates a #${id} receita`;
+  update(id: number, data: UpdateReceitaDto) {
+    return this.prisma.receitas.update({
+      where: { id },
+      data,
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} receita`;
+    return this.prisma.receitas.delete({
+      where: { id },
+    });
   }
 }
